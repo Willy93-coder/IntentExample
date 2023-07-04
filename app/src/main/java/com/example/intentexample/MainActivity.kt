@@ -3,6 +3,7 @@ package com.example.intentexample
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import com.example.intentexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
             // Guardamos el nombre del input text
             val name = binding.etName.text.toString()
 
-            if (name.isNotEmpty()) {
+            if (TextUtils.isEmpty(name)) {
+                binding.etName.error = "Información requerida"
+            } else {
                 // Se crea un objeto de tipo Intent que recibe el contexto (this) y la clase donde va.
                 val intent = Intent(this, ResultActivity::class.java)
 
